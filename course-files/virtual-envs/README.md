@@ -27,6 +27,7 @@ Python 3 includes a built-in module, `venv`, which is the standard way to create
     ```bash
     python3 -m venv .venv
     ```
+
     - `python3 -m venv`: Executes the `venv` module.
     - `.venv`: The conventional name for the directory containing the virtual environment files. This directory will hold a copy/link of the Python interpreter and associated package directories.
 
@@ -34,7 +35,7 @@ Python 3 includes a built-in module, `venv`, which is the standard way to create
 
 Creating the environment isn't enough; you must _activate_ it for your current shell session. Activation modifies your shell's `PATH` environment variable, ensuring that the `python` and `pip` commands prioritize the versions inside the `.venv` directory.
 
-- **How to Activate:** Use the activation script located within the environment's directory (e.g., inside `.venv/bin/` or `.venv/Scripts/`, depending on the OS where it was created). The exact command depends on your shell.
+- **How to Activate:** Use the activation script located within the environment's directory (e.g., inside `.venv/bin/` or `.venv/Scripts/`, depending on the OS where it was created). The exact command depends on your shell (Probably `source`).
 - **Indication:** Once activated, your shell prompt typically changes to show the name of the active environment (e.g., `(.venv)`).
 
 ### Installing Dependencies
