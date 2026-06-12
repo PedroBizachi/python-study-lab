@@ -54,6 +54,10 @@ config_logger = logging.getLogger("config.dict")
 config_logger.debug("dictConfig setup successfully")
 config_logger.info("Info goes to console")
 """
+
+"""
+# Uncomment to test JSON configuration
+#
 # Declarative logging configuration - JSON config
 
 print("\nDeclarative logging configuration - JSON config")
@@ -68,5 +72,46 @@ logging.config.dictConfig(json_config)
 config_logger = logging.getLogger("config.json")
 config_logger.debug("JSON config setup successfully")
 config_logger.info("Info goes to console")
+"""
 
 # Dynamically building config
+
+print("\nDinamically building config")
+print("-----------------------\n")
+
+base_config = {
+    "version": 1,
+    "disable_existing_loggers": True,
+    "handlers": {},
+    "formatters": {},
+    "loggers": {},
+}
+
+base_config["formatters"]["simple"] = {"format": "%(levelname)-8s - %(message)s"}
+
+base_config["handlers"]["console"] = {
+    "class": "logging.StreamHandler",
+    "level": "DEBUG",
+    "formatter": "simple",
+    "stream": "ext://sys.stdout",
+}
+
+base_config["loggers"]["config.dynamic"] = {
+    "level": "WARNING",
+    "handlers": ["console"],
+}
+
+
+def is_debug():
+    return True
+
+
+if is_debug():
+    for logger, _config in base_config["loggers"].items():
+        base_config["loggers"][logger]["level"] = "DEBUG"
+
+
+logging.config.dictConfig(base_config)
+config_logger = logging.getLogger("config.dynamic")
+config_logger.debug("Dinamic config setup successfully")
+config_logger.info("Info goes to console")
