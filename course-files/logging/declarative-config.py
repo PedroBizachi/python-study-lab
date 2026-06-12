@@ -19,8 +19,39 @@ app_logger = logging.getLogger("app")
 app_logger.debug("INI-style fileConfig is working!")
 """
 
+"""
+# Uncomment to test Dictionary configuration
+
 # Declarative logging configuration - Dictionary config
 
+print("\nDeclarative configuration using dictionary config")
+print("-----------------------\n")
+
+dict_config = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {"simple": {"format": "%(levelname)-8s - %(message)s"}},
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "level": "INFO",
+            "formatter": "simple",
+            "stream": "ext://sys.stdout",
+        }
+    },
+    "loggers": {
+        "config.dict": {
+            "level": "DEBUG",
+            "handlers": ["console"],
+        }
+    },
+}
+
+logging.config.dictConfig(dict_config)
+config_logger = logging.getLogger("config.dict")
+config_logger.debug("dictConfig setup successfully")
+config_logger.info("Info goes to console")
+"""
 # Declarative logging configuration - JSON config
 
 # Dynamically building config
