@@ -1,4 +1,5 @@
 # TODO: Import the necessary types from the `typing` module.
+from typing import Any
 
 # TODO: Add type hints to the function signature below.
 # - service_name should be a string (str).
@@ -7,7 +8,7 @@
 # - The function should be annotated to return a dictionary where keys are
 #   strings and values are of any type.
 
-def get_service_config(service_name, port, is_secure):
+def get_service_config(service_name: str, port: int, is_secure: bool) -> dict[str, Any]:
     """
     Creates a configuration dictionary for a service.
     """
