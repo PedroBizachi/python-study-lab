@@ -7,7 +7,7 @@ from typing import Optional, Any
 # - `default_role` is an optional string.
 # - The function returns a dictionary where keys are strings and values are
 #   lists of strings.
-def assign_default_role(users, default_role = None):
+def assign_default_role(users: list[dict[str, Any]], default_role: Optional[str] = None) -> dict[str, list[str]]:
     """
     Assigns a default role to users who have none and returns a role map.
     """
